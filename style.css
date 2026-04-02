@@ -373,3 +373,4 @@ body::after{content:'';position:fixed;inset:0;background-image:var(--isl-pat);ba
 /* ═══════════════ MICRO-INTERACTIONS ═══════════════ */
 button:active:not(.tab):not(.quiz-opt){transform:scale(.96)}
 .narrator-panel *{color:#eee!important}.narrator-panel select{background:#1a1a2e!important;color:#eee!important;border-color:rgba(255,255,255,.2)!important}.narrator-panel .narrator-title{color:#ffcc80!important}.narrator-panel .narrator-mode-btn{color:#eee!important;background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.15)!important}.narrator-panel .narrator-mode-btn:hover{background:rgba(255,255,255,.15)!important}.narrator-panel input[type=range]{accent-color:#ffcc80}
+.narrator-panel.hidden{display:none}
