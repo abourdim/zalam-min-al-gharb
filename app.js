@@ -430,7 +430,6 @@ function checkBadges(data) {
 function updateXPDisplay() {
   const data = getXPData();
   const xpEl = document.getElementById('xpDisplay');
-  if (!xpEl) return;
   if (xpEl) {
     const currentBadge = BADGES.filter(b => data.xp >= b.xp).pop();
     const nextBadge = BADGES.find(b => b.xp > data.xp);
@@ -479,9 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initSplash() {
   let count = 5;
   const el = document.getElementById('splashCount');
-  if (!el) return;
   const featuresEl = document.getElementById('splashFeatures');
-  if (!featuresEl) return;
   if (featuresEl) {
     featuresEl.innerHTML = T[lang].splashFeatures.map((f, i) =>
       `<div class="splash-feature" style="animation-delay:${0.3 + i * 0.3}s">${f}</div>`
@@ -495,7 +492,6 @@ function initSplash() {
 }
 function dismissSplash() {
   const s = document.getElementById('splash');
-  if (!s) return;
   if (s) { s.classList.add('hidden'); setTimeout(() => s.style.display = 'none', 500); }
   playSound('click');
 }
@@ -522,7 +518,6 @@ function setLang(l) {
   renderHome(); renderAnalysis(); renderLight(); renderQuiz(); renderCompare(); renderAbout(); renderHelp(); renderDuas();
   updateXPDisplay();
   const featuresEl = document.getElementById('splashFeatures');
-  if (!featuresEl) return;
   if (featuresEl) {
     featuresEl.innerHTML = T[l].splashFeatures.map((f, i) =>
       `<div class="splash-feature" style="animation-delay:${0.3 + i * 0.3}s">${f}</div>`
@@ -537,7 +532,6 @@ function setTheme(t) {
   localStorage.setItem('zg-theme', t);
   const idx = themes.indexOf(t);
   const el = document.getElementById('themeIcon');
-  if (!el) return;
   if (el) el.textContent = themeIcons[idx];
 }
 function cycleTheme() {
@@ -696,7 +690,6 @@ function renderQuizQuestion() {
   const t = T[lang];
   const container = document.getElementById('quizContainer');
   const result = document.getElementById('quizResult');
-  if (!result) return;
   if (result) result.classList.add('hidden');
 
   if (quizState.current >= QUIZ_DATA.length) {
@@ -797,7 +790,6 @@ function useHint() {
   const a = ANALYSIS[quizState.current % ANALYSIS.length];
   const d = a[lang];
   const hintEl = document.getElementById('quizHint');
-  if (!hintEl) return;
   if (hintEl) {
     hintEl.classList.remove('hidden');
     hintEl.innerHTML = `<div class="verse-box"><div class="verse-arabic">${d.verse}</div><div class="verse-ref">${d.verseRef}</div></div>`;
@@ -980,16 +972,13 @@ function initKeyboardNav() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       const helpPanel = document.getElementById('helpPanel');
-      if (!helpPanel) return;
       if (!helpPanel.classList.contains('hidden')) { toggleHelp(); return; }
       const duaPanel = document.getElementById('duaPanel');
-      if (!duaPanel) return;
       if (!duaPanel.classList.contains('hidden')) { toggleDuaPanel(); return; }
       document.querySelectorAll('.analysis-card.open').forEach(c => c.classList.remove('open'));
     }
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
       const analysisPanel = document.getElementById('panel-analysis');
-      if (!analysisPanel) return;
       if (!analysisPanel || !analysisPanel.classList.contains('active')) return;
       if (document.activeElement && document.activeElement.id === 'analysisSearch') return;
       e.preventDefault();
@@ -1015,14 +1004,11 @@ function toggleHelp() { document.getElementById('helpPanel').classList.toggle('h
 function toggleDuaPanel() { document.getElementById('duaPanel').classList.toggle('hidden'); playSound('click'); }
 function showToast(msg) {
   const t = document.getElementById('toast');
-  if (!t) return;
   const m = document.getElementById('toastMsg');
-  if (!m) return;
   if (t && m) { m.textContent = msg; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2500); }
 }
 function initScrollTop() {
   const btn = document.getElementById('scrollTop');
-  if (!btn) return;
   window.addEventListener('scroll', () => { if (btn) btn.classList.toggle('visible', window.scrollY > 300); });
 }
 
