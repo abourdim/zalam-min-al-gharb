@@ -572,7 +572,7 @@ function renderHome() {
   const dayIdx = new Date().getDate() % ANALYSIS.length;
   const a = ANALYSIS[dayIdx];
   const ad = a[lang];
-  document.getElementById('dailyCard').innerHTML = `
+  (document.getElementById('dailyCard')||{}).innerHTML= `
     <div class="daily-label">${t.dailyLabel}</div>
     <div class="daily-title">${ad.title}</div>
     <div class="daily-body">${ad.light}</div>
@@ -585,7 +585,7 @@ function renderHome() {
     {icon:'📊',tab:'compare',title:t.tabCompare,desc:lang==='ar'?'قارن وتأمل':lang==='fr'?'Comparez et reflechissez':'Compare & reflect'},
     {icon:'📖',tab:'about',title:t.tabAbout,desc:lang==='ar'?'عن الكتاب والمؤلف':lang==='fr'?'Le livre et l\'auteur':'Book & author'},
   ];
-  document.getElementById('homeGrid').innerHTML = sections.map(s => `
+  (document.getElementById('homeGrid')||{}).innerHTML= sections.map(s => `
     <div class="home-card" onclick="document.querySelector('[data-tab=${s.tab}]').click()">
       <span class="hc-icon">${s.icon}</span>
       <div class="hc-title">${s.title}</div>
@@ -637,7 +637,7 @@ function renderAnalysis() {
       </div>
     </div>`;
   }).join('');
-  document.getElementById('analysisContainer').innerHTML = searchBar + cards;
+  (document.getElementById('analysisContainer')||{}).innerHTML= searchBar + cards;
 }
 
 function filterAnalysis(query) {
@@ -654,7 +654,7 @@ function filterAnalysis(query) {
 // ═══════════════ RENDER: LIGHT (truth highlights) ═══════════════
 function renderLight() {
   const t = T[lang];
-  document.getElementById('lightContainer').innerHTML = ANALYSIS.map(a => {
+  (document.getElementById('lightContainer')||{}).innerHTML= ANALYSIS.map(a => {
     const d = a[lang];
     return `
     <div class="light-card scroll-reveal">
@@ -801,7 +801,7 @@ function useHint() {
 // ═══════════════ RENDER: COMPARE ═══════════════
 function renderCompare() {
   const t = T[lang];
-  document.getElementById('compareContainer').innerHTML = ANALYSIS.map(a => {
+  (document.getElementById('compareContainer')||{}).innerHTML= ANALYSIS.map(a => {
     const d = a[lang];
     return `
     <div class="compare-card scroll-reveal">
@@ -881,7 +881,7 @@ function renderAbout() {
     }
   };
   const a = about[lang];
-  document.getElementById('aboutContainer').innerHTML = `
+  (document.getElementById('aboutContainer')||{}).innerHTML= `
     <div class="about-disclaimer">
       <div class="about-disclaimer-title">${a.disclaimerTitle}</div>
       <p>${a.disclaimer}</p>
@@ -933,7 +933,7 @@ function renderHelp() {
       {title:'🤝 Contribuer',body:'GitHub : github.com/abourdim/zalam-min-al-gharb'},
     ]
   };
-  document.getElementById('helpBody').innerHTML = help[lang].map(h => `
+  (document.getElementById('helpBody')||{}).innerHTML= help[lang].map(h => `
     <div class="help-item">
       <div class="help-item-title">${h.title}</div>
       <div>${h.body}</div>
@@ -943,7 +943,7 @@ function renderHelp() {
 
 // ═══════════════ RENDER: DUAS ═══════════════
 function renderDuas() {
-  document.getElementById('duaPanelContent').innerHTML = DUAS.map(d => {
+  (document.getElementById('duaPanelContent')||{}).innerHTML= DUAS.map(d => {
     const dd = d[lang];
     return `
     <div class="dua-item">
