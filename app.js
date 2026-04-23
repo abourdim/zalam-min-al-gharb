@@ -689,6 +689,7 @@ function renderQuiz() {
 function renderQuizQuestion() {
   const t = T[lang];
   const container = document.getElementById('quizContainer');
+  if (!container) return;
   const result = document.getElementById('quizResult');
   if (result) result.classList.add('hidden');
 
